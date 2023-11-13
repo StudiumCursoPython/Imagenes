@@ -11,7 +11,7 @@ def redimensionar_imagen(ruta_entrada, ruta_salida, tamaño):
 # Ejemplo de uso
 ruta_entrada = r'C:/Users/Pepe/Documents/CursoFormacionPython/Imagenes/ImgCurso.png'
 ruta_salida = r'C:/Users/Pepe/Documents/CursoFormacionPython/Imagenes/redimensionadaEjercicio1.png'
-nuevo_tamaño = (400, 300)  # Nuevo tamaño en píxeles
+nuevo_tamaño = (400, 200)  # Nuevo tamaño en píxeles
 
 redimensionar_imagen(ruta_entrada, ruta_salida, nuevo_tamaño)
 
