@@ -2,33 +2,31 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import PhotoImage
 from PIL import Image
+import os
 
 def select_images():
-    file_paths = filedialog.askopenfilenames(filetypes=[("Imágenes", "*.png;*.jpg;*.webp")])
+    file_paths = filedialog.askopenfilenames(filetypes=[("Imágenes", "*.png;*.jpg;*.jpeg;*.webp")])
     if file_paths:
-        convert_images_to_pdf(file_paths)
+        convert_images_to_webp(file_paths)
 
-def convert_images_to_pdf(image_paths):
-    output_path = filedialog.asksaveasfilename(defaultextension=".pdf", filetypes=[("PDF", "*.pdf")])
-    if not output_path:
-        return
-
-    images = []
+def convert_images_to_webp(image_paths):
     for image_path in image_paths:
         image = Image.open(image_path)
-        images.append(image.convert("RGB"))
+        image_rgb = image.convert("RGB")
 
-    if len(images) > 0:
-        images[0].save(output_path, save_all=True, append_images=images[1:])
-        print("Se ha creado el archivo PDF en:", output_path)
-
+        # Define el nombre del archivo de salida
+        base_name = os.path.splitext(os.path.basename(image_path))[0]
+        output_path = filedialog.asksaveasfilename(initialfile=base_name, defaultextension=".webp", filetypes=[("WEBP", "*.webp")])
+        if output_path:
+            image_rgb.save(output_path, format="webp")
+            print("Se ha creado el archivo WEBP en:", output_path)
 
 # Ventana de la aplicación
 app = tk.Tk()
-app.title("Conversor de Imágenes a PDF")
+app.title("Conversor de Imágenes a WEBP")
 app.geometry("400x200")
 
-#Ruta de la imagen de fondo para cargarla
+# Ruta de la imagen de fondo para cargarla
 background_image = PhotoImage(file="redimensionadaEjercicio1.png")
 
 # Label para el fondo
