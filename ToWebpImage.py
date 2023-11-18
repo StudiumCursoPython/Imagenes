@@ -3,6 +3,7 @@ from tkinter import filedialog
 from tkinter import PhotoImage
 from PIL import Image
 import os
+import sys
 
 def select_images():
     file_paths = filedialog.askopenfilenames(filetypes=[("Imágenes", "*.png;*.jpg;*.jpeg;*.webp")])
@@ -25,6 +26,13 @@ def convert_images_to_webp(image_paths):
 app = tk.Tk()
 app.title("Conversor de Imágenes a WEBP")
 app.geometry("400x200")
+app.resizable(False, False)
+
+# Obtener la ruta de acceso a los recursos incluidos en el archivo
+ruta_recursos = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+
+# Cargar las imágenes
+icono = PhotoImage(file=os.path.join(ruta_recursos, "Studium.png"))
 
 # Ruta de la imagen de fondo para cargarla
 background_image = PhotoImage(file="redimensionadaEjercicio1.png")
@@ -38,4 +46,5 @@ select_button = tk.Button(app, text="Seleccionar imágenes", command=select_imag
 select_button.pack(pady=20)
 
 # Ejecutar la aplicación
+app.iconphoto(True, icono)
 app.mainloop()

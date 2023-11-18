@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import PhotoImage
 from PIL import Image
+import sys
+import os
 
 def select_images():
     file_paths = filedialog.askopenfilenames(filetypes=[("Imágenes", "*.png;*.jpg;*.webp")])
@@ -25,19 +27,29 @@ def convert_images_to_pdf(image_paths):
 
 # Ventana de la aplicación
 app = tk.Tk()
-app.title("Conversor de Imágenes a PDF")
+app.title("Conversor de Imágenes a Pdf")
 app.geometry("400x200")
+app.resizable(False, False)
 
-#Ruta de la imagen de fondo para cargarla
+# Obtener la ruta de acceso a los recursos incluidos en el archivo
+ruta_recursos = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+
+# Cargar las imágenes
+icono = PhotoImage(file=os.path.join(ruta_recursos, "Studium.png"))
+
+# Ruta de la imagen de fondo para cargarla, se ha generado y dimensionado en el ejercicio1 ImagenesBasic
 background_image = PhotoImage(file="redimensionadaEjercicio1.png")
 
 # Label para el fondo
 background_label = tk.Label(app, image=background_image)
-background_label.place(x=0, y=0, relwidth=1, relheight=1)  # Ajusta la imagen al tamaño de la ventana
+# Para ajustar la imagen al tamaño de la ventana
+background_label.place(x=0, y=0, relwidth=1, relheight=1)  
 
 # Botón para seleccionar imágenes
 select_button = tk.Button(app, text="Seleccionar imágenes", command=select_images)
 select_button.pack(pady=20)
 
 # Ejecutar la aplicación
+app.iconphoto(True, icono)
 app.mainloop()
+
