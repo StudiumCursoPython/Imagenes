@@ -6,9 +6,17 @@ import sys, os
 class AplicacionFirma:
     def __init__(self, raiz):
         self.raiz = raiz
+        # self se utiliza para acceder y modificar los atributos de la instancia
 
+        # Obtener la ruta de acceso a los recursos incluidos en el archivo para los archivos empaquetados
         ruta_recursos = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+
+        # Otra forma de obtener los recursos 
+        # ruta_recursos = getattr(sys, 'os.path.dirname(os.path.abspath(__file__))', os.path.dirname(os.path.abspath(__file__)))
+
+        # Cargar las imágenes
         icono = PhotoImage(file=os.path.join(ruta_recursos, "Studium.png"))
+        # Función que construye la ruta completa al archivo de imagen "Studium.png" válida para los sistemas W y Linux
 
         raiz.title("Firma con el Ratón")
         raiz.iconphoto(True,icono)
@@ -21,7 +29,7 @@ class AplicacionFirma:
         self.imagen = Image.new("RGB", (400, 200), "white")
         self.dibujo = ImageDraw.Draw(self.imagen)
 
-        #Cuando se presiona el botón izquierdo del ratón
+        # Captura de evento de movimiento del ratón con botón izquierdo presionado
         self.lienzo.bind("<B1-Motion>", self.dibujar)
         #Cuando se suelta el mismo
         self.lienzo.bind("<ButtonRelease-1>", self.resetear_estado)
@@ -40,7 +48,7 @@ class AplicacionFirma:
             x2, y2 = evento.x, evento.y
             self.lienzo.create_line((x1, y1, x2, y2), fill="black", width=2)
             #Para el posterior guardado en el archivo
-            self.dibujo.line((x1, y1, x2, y2), fill="blue", width=2)
+            self.dibujo.line((x1, y1, x2, y2), fill="black", width=2)
         self.ultimo_punto = (evento.x, evento.y)
 
     def resetear_estado(self, evento):
@@ -58,4 +66,5 @@ class AplicacionFirma:
 # Crear la ventana principal y la aplicación
 raiz = tk.Tk()
 app = AplicacionFirma(raiz)
+# Llama automáticamente al método __init__ de la clase AplicacionFirma
 raiz.mainloop()
