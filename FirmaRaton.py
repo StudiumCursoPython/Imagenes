@@ -16,7 +16,7 @@ class AplicacionFirma:
 
         # Cargar las imágenes
         icono = PhotoImage(file=os.path.join(ruta_recursos, "Studium.png"))
-        # Función que construye la ruta completa al archivo de imagen "Studium.png" válida para los sistemas W y Linux
+        # Función que construye la ruta completa al archivo de imagen "Studium.png" válida para los sistemas W y Linux con '_MEIPASS'
 
         raiz.title("Firma con el Ratón")
         raiz.iconphoto(True,icono)
@@ -51,7 +51,7 @@ class AplicacionFirma:
             self.dibujo.line((x1, y1, x2, y2), fill="black", width=2)
         self.ultimo_punto = (evento.x, evento.y)
 
-    def resetear_estado(self, evento):
+    def resetear_estado(self, evento): # Peculiaridad de Python algunas veces necesita más argumentos de los que usa
         self.ultimo_punto = None
 
     def borrar(self):
@@ -66,5 +66,6 @@ class AplicacionFirma:
 # Crear la ventana principal y la aplicación
 raiz = tk.Tk()
 app = AplicacionFirma(raiz)
+
 # Llama automáticamente al método __init__ de la clase AplicacionFirma
 raiz.mainloop()
