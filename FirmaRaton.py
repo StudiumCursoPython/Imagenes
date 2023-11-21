@@ -46,12 +46,13 @@ class AplicacionFirma:
         if self.ultimo_punto:
             x1, y1 = self.ultimo_punto
             x2, y2 = evento.x, evento.y
+            #Para poder verlo
             self.lienzo.create_line((x1, y1, x2, y2), fill="black", width=2)
             #Para el posterior guardado en el archivo
             self.dibujo.line((x1, y1, x2, y2), fill="black", width=2)
         self.ultimo_punto = (evento.x, evento.y)
 
-    def resetear_estado(self, evento): # Se necesitan los dos aunque en este caso evento no se usa.
+    def resetear_estado(self, evento): # Se necesitan los dos aunque en este caso evento no se usa. Pasa en algunos casos.
         self.ultimo_punto = None
 
     def borrar(self):
@@ -64,11 +65,11 @@ class AplicacionFirma:
         print(f"Firma guardada como {nombre_archivo}")
 
         # Mostrar el nombre del archivo en el lienzo
-        texto_id = self.lienzo.create_text(300, 180, text=f"Guardado como: {nombre_archivo}", fill="green")
+        self.lienzo.create_text(300, 180, text=f"Guardado como: {nombre_archivo}", fill="green")
 
         # Función para borrar el texto y limpiar el lienzo
         def borrar_texto():
-            self.lienzo.delete(texto_id)
+            #self.lienzo.delete(texto_id)
             self.lienzo.delete("all")
 
         # Llamar a la función borrar_texto después de 3 segundos (3000 milisegundos)
