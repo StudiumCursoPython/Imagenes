@@ -19,8 +19,13 @@ def solicitar_dimensiones():
     alto = simpledialog.askstring("Alto", "Dame el alto (en blanco valor original):")
 
     try:
-        ancho = int(ancho) if ancho else None
+        if ancho:
+            ancho = int(ancho)
+        else:
+            ancho = None
+        # Otra forma de sintaxis de condición, operador ternario
         alto = int(alto) if alto else None
+
     except ValueError:
         print("Error en los tamaños.")
         messagebox.showerror("Error", "Las dimensiones no son correctas" + "\nSe mantendrá el tamaño original")
@@ -42,7 +47,7 @@ def convertir_y_redimensionar_imagen(ruta_entrada, ancho, alto):
 
 # Ventana de la aplicación
 app = tk.Tk()
-app.title("Conversor de Imágenes a WEBP")
+app.title("Redimensión y conversión a WEBP")
 app.geometry("400x200")
 app.resizable(False, False)
 
