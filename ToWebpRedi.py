@@ -7,7 +7,7 @@ def seleccionar_y_procesar_imagen():
     # Abre un diálogo para seleccionar la imagen
     file_path = filedialog.askopenfilename(filetypes=[("Imágenes", "*.png;*.jpg;*.jpeg;*.webp")])
     if file_path:
-        # Sepide las dimensiones de la imagen
+        # Se piden las dimensiones de la imagen
         ancho, alto = solicitar_dimensiones()
         
         # Llama a la función para procesar la imagen
