@@ -1,7 +1,7 @@
-import tkinter as tk
 from tkinter import filedialog
 from tkinter import PhotoImage
 from PIL import Image
+import tkinter as tk
 import os
 import sys
 

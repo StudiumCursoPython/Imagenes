@@ -1,6 +1,6 @@
-import tkinter as tk
 from tkinter import Button, Canvas, PhotoImage
 from PIL import Image, ImageDraw
+import tkinter as tk
 import sys, os
 
 class AplicacionFirma:

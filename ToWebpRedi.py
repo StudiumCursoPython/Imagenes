@@ -1,6 +1,6 @@
-import tkinter as tk
 from tkinter import filedialog, simpledialog, PhotoImage, messagebox
 from PIL import Image
+import tkinter as tk
 import sys, os
 
 def seleccionar_y_procesar_imagen():
