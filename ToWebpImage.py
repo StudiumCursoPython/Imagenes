@@ -1,16 +1,16 @@
-import tkinter as tk
 from tkinter import filedialog
 from tkinter import PhotoImage
 from PIL import Image
+import tkinter as tk
 import os
 import sys
 
 def select_images():
     file_paths = filedialog.askopenfilenames(filetypes=[("Imágenes", "*.png;*.jpg;*.jpeg;*.webp")])
     if file_paths:
-        convert_images_to_webp(file_paths)
+        convertir_imagen_webp(file_paths)
 
-def convert_images_to_webp(image_paths):
+def convertir_imagen_webp(image_paths):
     for image_path in image_paths:
         image = Image.open(image_path)
         image_rgb = image.convert("RGB")
