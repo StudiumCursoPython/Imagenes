@@ -21,6 +21,8 @@ class AplicacionFirma:
         raiz.title("Firma con el Ratón")
         raiz.iconphoto(True,icono)
         raiz.resizable(False,False)
+        #centrado aproximado de la ventana
+        raiz.eval('tk::PlaceWindow . center')
 
 
         self.lienzo = Canvas(raiz, width=400, height=200, bg="white")
