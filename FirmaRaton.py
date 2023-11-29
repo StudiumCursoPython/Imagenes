@@ -24,7 +24,6 @@ class AplicacionFirma:
         #centrado aproximado de la ventana
         raiz.eval('tk::PlaceWindow . center')
 
-
         self.lienzo = Canvas(raiz, width=400, height=200, bg="white")
         self.lienzo.pack()
 
